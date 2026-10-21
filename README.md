@@ -3,10 +3,10 @@
 Predicts which telecom customers are likely to leave, using scikit-learn pipelines and stratified cross-validation, and shows which factors drive churn.
 
 ## Data
-- IBM Telco Customer Churn dataset: 7,043 customers, 21 columns, target `Churn`
-- Source: [add the link you downloaded it from]
+- Telco Customer Churn data (7,043 customers, 21 columns, target `Churn`), provided with the Intellipaat Data Science course capstone project
 - 26.5% of customers churned, so always predicting "stay" gives 73.5% accuracy (the baseline to beat)
-
+- Not included in this repo. Place `customer_churn.csv` in the same folder as the notebook to run it.
+  
 ## Approach
 1. Cleaned `TotalCharges` (11 blanks for new customers) and dropped `customerID`
 2. 80/20 stratified train/test split (seed 42)
@@ -28,6 +28,7 @@ Test set (1,409 customers), Random Forest: accuracy 0.771, churn precision 0.55,
 It caught 276 of 374 churners, with 225 false alarms and 98 missed.
 
 ![Confusion matrix](images/confusion_matrix.png)
+
 ![ROC curve](images/roc_curve.png)
 
 **Cutoff trade-off:** at 0.5 the model flags 501 customers (recall 0.74); at 0.4 it flags 599 (recall 0.82, same F1 0.63).
@@ -35,6 +36,7 @@ It caught 276 of 374 churners, with 225 false alarms and 98 missed.
 **Lift:** the riskiest 10% of customers hold 29% of all churners (2.9x), and the riskiest 20% hold 50% (2.5x).
 
 **Main drivers** (permutation importance):
+
 ![Feature importance](images/feature_importance.png)
 
 **Tuning:** randomized search improved cross-validated F1 only from 0.631 to 0.637, so the default settings were already good.
