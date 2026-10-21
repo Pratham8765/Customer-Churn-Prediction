@@ -6,9 +6,10 @@ Predicts which telecom customers are likely to leave, using scikit-learn pipelin
 - Telco Customer Churn data (7,043 customers, 21 columns, target `Churn`), provided with the Intellipaat Data Science course capstone project
 - 26.5% of customers churned, so always predicting "stay" gives 73.5% accuracy (the baseline to beat)
 - Not included in this repo. Place `customer_churn.csv` in the same folder as the notebook to run it.
+- The dataset and the starting task came from the course. The pipeline, model comparison, evaluation, cutoff and lift analysis, and conclusions are my own work.
   
 ## Approach
-1. Cleaned `TotalCharges` (11 blanks for new customers) and dropped `customerID`
+1. Converted TotalCharges to numbers (11 blanks for brand-new customers, filled with the median inside the pipeline) and dropped customerID
 2. 80/20 stratified train/test split (seed 42)
 3. Scaling and one-hot encoding inside a pipeline, fitted on training data only (no leakage)
 4. Compared 4 models with stratified 5-fold CV on the training data
@@ -47,9 +48,14 @@ It caught 276 of 374 churners, with 225 false alarms and 98 missed.
 - The three models perform about the same, so a simple, explainable model like logistic regression is a reasonable choice.
 
 ## Limitations
-- One public dataset; results may not transfer to other companies.
+- One dataset, provided with the course; results may not transfer to other companies.
 - No time dimension: the model uses a snapshot of each customer.
 - Patterns are descriptive, not proof of cause.
+
+## Repository contents
+- `Telco_Customer_Churn.ipynb`: the full analysis (code, results, charts)
+- `images/`: saved charts used in this README
+- `requirements.txt`: Python packages needed
 
 ## How to run
 ```bash
