@@ -45,7 +45,7 @@ It caught 276 of 374 churners, with 225 false alarms and 98 missed.
 ## SQL analysis and Power BI dashboard
 I loaded the data into SQLite, cleaned it with SQL, and ran 11 analysis queries (GROUP BY, CTEs, RANK and running-total window functions). The cleaned data feeds an interactive Power BI dashboard.
 
-![Dashboard overview](powerbi/dashboard_overview.png)
+![Dashboard overview](PowerBI/dashboard_overview.png)
 
 **Key findings**
 - Month-to-month customers churn at 43%, one-year at 11%, two-year at 3%
