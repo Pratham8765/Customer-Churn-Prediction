@@ -1,9 +1,9 @@
-# Telco Customer Churn Prediction
+# Customer Churn Prediction
 
 Predicts which telecom customers are likely to leave, using scikit-learn pipelines and stratified cross-validation, and shows which factors drive churn.
 
 ## Data
-- Telco Customer Churn data (7,043 customers, 21 columns, target `Churn`), provided with the Intellipaat Data Science course capstone project
+- Customer Churn data (7,043 customers, 21 columns, target `Churn`), provided with the Intellipaat Data Science course capstone project
 - 26.5% of customers churned, so always predicting "stay" gives 73.5% accuracy (the baseline to beat)
 - Not included in this repo. Place `customer_churn.csv` in the same folder as the notebook to run it.
 - The dataset and the starting task came from the course. The pipeline, model comparison, evaluation, cutoff and lift analysis, and conclusions are my own work.
