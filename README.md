@@ -42,6 +42,18 @@ It caught 276 of 374 churners, with 225 false alarms and 98 missed.
 
 **Tuning:** randomized search improved cross-validated F1 only from 0.631 to 0.637, so the default settings were already good.
 
+## SQL analysis and Power BI dashboard
+I loaded the data into SQLite, cleaned it with SQL, and ran 11 analysis queries (GROUP BY, CTEs, RANK and running-total window functions). The cleaned data feeds an interactive Power BI dashboard.
+
+![Dashboard overview](powerbi/dashboard_overview.png)
+
+**Key findings**
+- Month-to-month customers churn at 43%, one-year at 11%, two-year at 3%
+- 47% of customers leave in their first 12 months, versus 10% after 4 years
+- Fiber optic customers churn at 42%, DSL at 19%
+- Electronic check payers churn at 45%, credit card payers at 15%
+- Month-to-month + fiber optic + first year is the riskiest group: 916 customers, 70% churn
+
 ## Conclusions
 - Contract type is the strongest churn driver, followed by internet service and tenure.
 - A retention team can reach about half of all churners by contacting the riskiest 20% of customers.
@@ -58,11 +70,18 @@ It caught 276 of 374 churners, with 225 false alarms and 98 missed.
 - `requirements.txt`: Python packages needed
 
 ## How to run
+**Notebook**
 ```bash
 pip install -r requirements.txt
 jupyter notebook Telco_Customer_Churn.ipynb
 ```
-Put `customer_churn.csv` in the same folder as the notebook.
+**SQL pipeline** (needs Python 3.8+ with SQLite 3.25+, which ships with current Python)
+```bash
+python sql/run_pipeline.py customer_churn.csv
+```
+It creates `churn.db`, `results/` (11 query outputs) and `powerbi_data/` (CSV files for Power BI).
+
+Put `customer_churn.csv` in the same folder. It is not included in this repo.
 
 ## Tech stack
-Python, Pandas, NumPy, Scikit-Learn, Matplotlib
+Python, Pandas, NumPy, Scikit-Learn, Matplotlib, SQL (SQLite), Power BI
