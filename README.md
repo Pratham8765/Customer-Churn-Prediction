@@ -77,8 +77,7 @@ jupyter notebook Telco_Customer_Churn.ipynb
 ```
 **SQL pipeline** (needs Python 3.8+ with SQLite 3.25+, which ships with current Python)
 ```bash
-python sql/run_pipeline.py customer_churn.csv
-```
+python SQL/run_pipeline.py customer_churn.csv```
 It creates `churn.db`, `results/` (11 query outputs) and `powerbi_data/` (CSV files for Power BI).
 
 Put `customer_churn.csv` in the same folder. It is not included in this repo.
