@@ -9,7 +9,7 @@ Predicts which telecom customers are likely to leave, using scikit-learn pipelin
 - The dataset and the starting task came from the course. The pipeline, model comparison, evaluation, cutoff and lift analysis, and conclusions are my own work.
   
 ## Approach
-1. Converted TotalCharges to numbers (11 blanks for brand-new customers, filled with the median inside the pipeline) and dropped customerID
+1. Converted `TotalCharges` to numbers (11 blanks for brand-new customers, filled with the median inside the pipeline) and dropped `customerID`
 2. 80/20 stratified train/test split (seed 42)
 3. Scaling and one-hot encoding inside a pipeline, fitted on training data only (no leakage)
 4. Compared 4 models with stratified 5-fold CV on the training data
@@ -47,6 +47,8 @@ I loaded the data into SQLite, cleaned it with SQL, and ran 11 analysis queries 
 
 ![Dashboard overview](PowerBI/dashboard_overview.png)
 
+[Full dashboard (PDF)](PowerBI/Churn_Dashboard_Overview.pdf)
+
 **Key findings**
 - Month-to-month customers churn at 43%, one-year at 11%, two-year at 3%
 - 47% of customers leave in their first 12 months, versus 10% after 4 years
@@ -65,7 +67,9 @@ I loaded the data into SQLite, cleaned it with SQL, and ran 11 analysis queries 
 - Patterns are descriptive, not proof of cause.
 
 ## Repository contents
-- `Telco_Customer_Churn.ipynb`: the full analysis (code, results, charts)
+- `Telco_Customer_Churn.ipynb`: modeling notebook (pipelines, cross-validation, cutoff and lift analysis)
+- `SQL/`: SQLite analysis (data quality checks, cleaning, 11 queries with CTEs and window functions) and `run_pipeline.py`
+- `PowerBI/`: Power BI dashboard (PNG screenshot and PDF export)
 - `images/`: saved charts used in this README
 - `requirements.txt`: Python packages needed
 
@@ -77,7 +81,8 @@ jupyter notebook Telco_Customer_Churn.ipynb
 ```
 **SQL pipeline** (needs Python 3.8+ with SQLite 3.25+, which ships with current Python)
 ```bash
-python SQL/run_pipeline.py customer_churn.csv```
+python SQL/run_pipeline.py customer_churn.csv
+```
 It creates `churn.db`, `results/` (11 query outputs) and `powerbi_data/` (CSV files for Power BI).
 
 Put `customer_churn.csv` in the same folder. It is not included in this repo.
