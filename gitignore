@@ -1,0 +1,8 @@
+# course dataset and files derived from it: do not publish
+customer_churn.csv
+powerbi_data/
+
+# generated files
+churn.db
+__pycache__/
+.ipynb_checkpoints/
